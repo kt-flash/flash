@@ -22,7 +22,7 @@ import java.util.Map;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
 @WebAppConfiguration
-public class MyBatisPlusTest {
+public class MyBatisPlusUpdateTest {
 
     @Autowired
     private UserMapper userMapper;
