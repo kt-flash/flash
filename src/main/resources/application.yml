@@ -32,6 +32,6 @@ mybatis-plus:
 
 logging:
   level:
-    root: warn
-    com.quanjing.mapper: trace
+    root: info
+    com.flash.mapper: trace
   pattern: '%p%m%n'

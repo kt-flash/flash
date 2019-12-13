@@ -21,15 +21,19 @@ public class User {
 
     private Integer age;
 
+    private String telephone;
+
+    private String fax;
 
     private String email;
 
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime ctime;
+
     @TableField(fill = FieldFill.UPDATE)
     private LocalDateTime gtime;
 
-    private Long parentId;
+    private Long managerId;
 
     @Version
     private Integer version;

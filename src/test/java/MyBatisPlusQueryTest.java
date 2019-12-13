@@ -139,7 +139,7 @@ public class MyBatisPlusQueryTest {
     @Test
     public void selectByServiceChain() {
         List<User> list = userService.lambdaQuery().gt(User::getAge, 10)
-                .eq(User::getParentId, 2).list();
+                .eq(User::getManagerId, 2).list();
     }
 
 }
