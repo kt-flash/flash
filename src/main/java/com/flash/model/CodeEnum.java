@@ -1,4 +1,4 @@
-package com.flash.dto;
+package com.flash.model;
 
 public enum CodeEnum {
 

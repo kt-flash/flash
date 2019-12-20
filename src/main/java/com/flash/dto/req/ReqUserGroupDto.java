@@ -11,6 +11,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
+ * User保存修改Dto
  * @author: liliang.<br>
  */
 @Data

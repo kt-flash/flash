@@ -10,5 +10,17 @@ import lombok.Data;
 @Data
 public class ReqQueryPageDto {
 
-    private Page page;
+    private long size = 10;
+
+    private long current = 1;
+
+    private boolean isAsc = false;
+
+    private String order = "ctime";
+
+    public Page getPage(){
+        return new Page(current, size);
+    }
+
+
 }

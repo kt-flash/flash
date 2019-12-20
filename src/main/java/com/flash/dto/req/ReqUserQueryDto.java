@@ -4,6 +4,7 @@ import com.flash.dto.ReqQueryPageDto;
 import lombok.Data;
 
 /**
+ * User查询Dto
  * @author: liliang.<br>
  */
 @Data

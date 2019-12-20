@@ -1,9 +1,11 @@
 package com.flash.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @Author: LiLiang
@@ -12,10 +14,10 @@ import java.time.LocalDateTime;
 @Data
 public class User {
 
-    @TableId(type = IdType.AUTO)
+    @TableId(type = IdType.AUTO) //id自动递增
     private Long id;
 
-    //@TableField(condition = SqlCondition.LIKE)
+    //@TableField(condition = SqlCondition.LIKE) //作为条件时使用like
     private String name;
 
 
@@ -27,18 +29,21 @@ public class User {
 
     private String email;
 
-    @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime ctime;
+    @TableField(fill = FieldFill.INSERT) //insert操作时填充该字段
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date ctime;
 
-    @TableField(fill = FieldFill.UPDATE)
-    private LocalDateTime gtime;
+    @TableField(fill = FieldFill.UPDATE) //update操作时填充该字段
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date gtime;
 
     private Long managerId;
 
-    @Version
+    @Version //实现乐观锁，更新时验证version
     private Integer version;
 
-    @TableLogic
-    @TableField(select = false)
+    @TableLogic //逻辑删除标识
+    @TableField(select = false) //不查询该列
+    @JsonIgnore //该字段不转json
     private Integer invalid;
 }

@@ -1,14 +1,11 @@
 package com.flash.dto;
 
+import com.flash.model.CodeEnum;
 import lombok.Data;
 
 import java.io.Serializable;
 
-/**
- * @author: leiliang.<br>
- * 创建时间: 2018-06-09 下午4:33.<br>
- * 功能描述: todo .<br>
- */
+
 @Data
 public class BaseResult<T> implements Serializable {
 

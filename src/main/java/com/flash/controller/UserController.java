@@ -6,6 +6,7 @@ import com.flash.dto.BaseResult;
 import com.flash.dto.req.ReqUserGroupDto;
 import com.flash.dto.req.ReqUserQueryDto;
 import com.flash.entity.User;
+import com.flash.model.PageResultDto;
 import com.flash.service.UserService;
 import com.flash.validator.group.ValidationGroup1;
 import org.springframework.beans.BeanUtils;
@@ -38,7 +39,6 @@ public class UserController {
                 return BaseResult.buildTipErrorResult(error.getDefaultMessage());
             }
         }
-        System.out.println("reqUserDto="+reqUserDto);
         User user = new User();
         BeanUtils.copyProperties(reqUserDto, user);
         userService.save(user);
@@ -54,13 +54,14 @@ public class UserController {
                 return BaseResult.buildTipErrorResult(error.getDefaultMessage());
             }
         }
-        System.out.println("reqUserDto="+reqUserDto);
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         wrapper.gt("age",reqUserDto.getAge());
+        wrapper.orderBy(true, reqUserDto.isAsc(), reqUserDto.getOrder());
 
         IPage page = userService.page(reqUserDto.getPage(), wrapper);
 
-        return BaseResult.buildSuccessResult(page);
+        return BaseResult.buildSuccessResult(new PageResultDto(page.getTotal(),
+                page.getPages(), page.getSize(), page.getRecords()));
     }
 
 
